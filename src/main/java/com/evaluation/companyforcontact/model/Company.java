@@ -24,7 +24,7 @@ public class Company {
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "uuid", updatable = false, unique = true, length = 36)
     private UUID uuid = UUID.randomUUID();
-
+    @Column(unique = true)
     private Long tvaNumber;
     @Embedded
     private Address address;

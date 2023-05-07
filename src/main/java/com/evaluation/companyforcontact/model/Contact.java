@@ -32,9 +32,12 @@ public class Contact {
 
     private String lastName;
     @OneToMany
-    private List<Company> company;
+    private List<Company> companies;
     @Enumerated(EnumType.STRING)
     private Type contactType;
+
+    @Embedded
+    private Address address;
 
     private Long tvaNumber;
 

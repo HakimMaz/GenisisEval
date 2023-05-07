@@ -15,5 +15,5 @@ public class Address {
     private String state;
     private String zip;
 
-    // Getters and setters for street, city, state, and zip fields
+
 }
