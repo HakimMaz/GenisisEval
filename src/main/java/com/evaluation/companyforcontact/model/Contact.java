@@ -31,14 +31,14 @@ public class Contact {
     private String firstName;
 
     private String lastName;
-    @OneToMany
+    @ManyToMany
     private List<Company> companies;
     @Enumerated(EnumType.STRING)
     private Type contactType;
 
     @Embedded
     private Address address;
-
+   @Setter
     private Long tvaNumber;
 
 
@@ -47,53 +47,7 @@ public class Contact {
 
 
 
-   /* public Long getId() {
-         return id;
-     }
 
-     public void setId(Long id) {
-         this.id = id;
-     }
-
-    public UUID getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public List<Company> getCompany() {
-        return company;
-    }
-
-    public void setCompany(List<Company> company) {
-        this.company = company;
-    }
-
-    public Type getContactType() {
-        return contactType;
-    }
-
-    public void setContactType(Type contactType) {
-        this.contactType = contactType;
-    }*/
 
     public void setTvaNumber(Long tvaNumber) {
         if(contactType.equals(Type.FREELANCER))

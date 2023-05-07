@@ -4,6 +4,8 @@ import com.evaluation.companyforcontact.dto.ContactCreateDTO;
 import com.evaluation.companyforcontact.dto.ContactUpdateDTO;
 import com.evaluation.companyforcontact.dto.mapper.ContactMapper;
 import com.evaluation.companyforcontact.model.Contact;
+import com.evaluation.companyforcontact.model.Type;
+import com.evaluation.companyforcontact.service.CompanyService;
 import com.evaluation.companyforcontact.service.ContactService;
 import io.swagger.annotations.Api;
 
@@ -33,6 +35,8 @@ public class ContactController {
     @Autowired
     private ContactService contactService;
     @Autowired
+    private CompanyService companyService;
+    @Autowired
     private ContactMapper mapper;
 
     @ApiOperation(value = "Create new contact", nickname = "createContact", notes = "Allow user to create contact", response = Contact.class, tags = {"contact"})
@@ -44,7 +48,18 @@ public class ContactController {
     @PostMapping("/create")
     public ResponseEntity<Contact> createContact( @RequestBody ContactCreateDTO contactRequest)  {
             try {
-                Contact contact = mapper.mapJsonToContact(contactRequest);
+                // can be done using a factory pattern
+                //but remember  keep things simple
+                Contact contact=null;
+                if(companyService.tvaValidation(contactRequest.getTvaNumber()) &&
+                        contactRequest.getContactType().equals(Type.FREELANCER)
+                )
+                 contact= mapper.mapJsonToFreelancer(contactRequest);
+
+                if(contactRequest.getContactType().equals(Type.EMPLOYEE)) {
+                    contact = mapper.mapJsonToContact(contactRequest);
+                }
+
                 var savedContact = contactService.saveContact(contact);
                 return  new ResponseEntity<>(savedContact,HttpStatus.CREATED);
             } catch (Exception e) {
