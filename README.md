@@ -35,7 +35,7 @@ To test the API using Postman, follow these steps:
 1. navigate to the project , download the file CompanyContact_Collection.json
 2. import the file in postman
 3. now you have all the endpoints and each endpoint. with the necessary data
-4.Enjoying chaninging data and test the endpoints 
+4. Enjoying chaninging data and test the endpoints 
 5. View the response in the "Response" tab.
 
 For example, to retrieve a list of all contact, you would send a GET request to `http://localhost:8080/api/v1/contacts/all`.
