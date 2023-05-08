@@ -45,7 +45,7 @@ public class ContactController {
                @ApiResponse(code = 400, message = "Bad request!"),
                @ApiResponse(code = 500, message = "Internal server error!")
        })
-    @PostMapping("/create")
+ /*   @PostMapping("/create")
     public ResponseEntity<Contact> createContact( @RequestBody ContactCreateDTO contactRequest)  {
             try {
                 // can be done using a factory pattern
@@ -67,6 +67,20 @@ public class ContactController {
                 return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
             }
         }
+*/
+
+
+    @PostMapping("/create")
+     public ResponseEntity<Contact> createContact( @RequestBody ContactCreateDTO contactRequest)  {
+             try {
+                 Contact contact= mapper.mapJsonToContact(contactRequest);
+                 var savedContact = contactService.saveContact(contact);
+                 return  new ResponseEntity<>(savedContact,HttpStatus.CREATED);
+             } catch (Exception e) {
+                 e.printStackTrace();
+                 return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+             }
+         }
 
    @GetMapping("/all")
     public List<Contact>getAllContacts(){
@@ -109,5 +123,8 @@ public class ContactController {
                }
 
     }
+
+
+
 
 }

@@ -6,7 +6,9 @@ import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -31,8 +33,8 @@ public class Contact {
     private String firstName;
 
     private String lastName;
-    @ManyToMany
-    private List<Company> companies;
+    @OneToMany(mappedBy = "contact")
+    private Set<CompanyContact> companyContacts = new HashSet<>();
     @Enumerated(EnumType.STRING)
     private Type contactType;
 

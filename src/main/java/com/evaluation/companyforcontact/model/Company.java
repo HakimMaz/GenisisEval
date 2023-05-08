@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -28,6 +30,11 @@ public class Company {
     private Long tvaNumber;
     @Embedded
     private Address address;
+
+    @OneToMany(mappedBy = "company")
+    private Set<CompanyContact> companyContacts = new HashSet<>();
+
+
 
 
 
