@@ -1,5 +1,6 @@
 package com.evaluation.companyforcontact.service;
 
+import com.evaluation.companyforcontact.dto.CompanyUpdateDTO;
 import com.evaluation.companyforcontact.model.Company;
 
 import java.util.List;
@@ -18,6 +19,6 @@ public interface CompanyService {
 
 
     void addContactToCompany(UUID uuidContact, Long tvaNumber);
-
     public Company getCompanyByUuid(UUID uuid);
+    public Company editCompany(UUID uuid, CompanyUpdateDTO  requestUpdate);
 }

@@ -30,7 +30,7 @@ public class Company {
     private Long tvaNumber;
     @Embedded
     private Address address;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "company")
     private Set<CompanyContact> companyContacts = new HashSet<>();
 

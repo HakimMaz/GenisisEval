@@ -1,6 +1,7 @@
 package com.evaluation.companyforcontact.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
@@ -33,6 +34,7 @@ public class Contact {
     private String firstName;
 
     private String lastName;
+    @JsonIgnore
     @OneToMany(mappedBy = "contact")
     private Set<CompanyContact> companyContacts = new HashSet<>();
     @Enumerated(EnumType.STRING)
