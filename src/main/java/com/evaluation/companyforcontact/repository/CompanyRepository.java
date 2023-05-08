@@ -9,6 +9,5 @@ import java.util.UUID;
 public interface CompanyRepository extends JpaRepository<Company,Long> {
 
     public Company findByTvaNumber(Long tva);
-    void deleteByUuid(UUID uuid);
-
+    public Company findByUuid(UUID uuid);
 }
