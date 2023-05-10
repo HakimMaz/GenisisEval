@@ -88,6 +88,7 @@ public class CompanyServiceImpl implements CompanyService {
         return companyRepository.findByUuid(uuid);
    }
     @Override
+    @Transactionnal
     public Company editCompany(UUID uuid, CompanyUpdateDTO requestUpdate) {
 
         Company company= companyRepository.findByUuid(uuid);
