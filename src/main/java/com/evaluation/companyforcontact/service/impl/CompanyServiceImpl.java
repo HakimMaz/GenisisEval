@@ -88,7 +88,7 @@ public class CompanyServiceImpl implements CompanyService {
         return companyRepository.findByUuid(uuid);
    }
     @Override
-    @Transactionnal
+    @Transactional
     public Company editCompany(UUID uuid, CompanyUpdateDTO requestUpdate) {
 
         Company company= companyRepository.findByUuid(uuid);
@@ -106,6 +106,7 @@ public class CompanyServiceImpl implements CompanyService {
                         contactRepository.save(contact);
                             });
         }
+        companyRepository.save(company);
         return company ;
     }
 
